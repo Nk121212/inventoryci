@@ -52,7 +52,8 @@
     <body>
         <div class="col-sm-12">
             <div class="table-responsive" style="margin-top:60px;">
-                <table class="table table-hover table-dark" id="mytable">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addbrg"><i class="fas fa-plus"></i> Barang</button>
+                <table class="table table-hover table-dark text-center" id="mytable">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -78,6 +79,38 @@
                 </table>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="addbrg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Barang</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <input type="text" name="" id="" class="form-control" placeholder="Nama Barang">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="text" name="" id="" class="form-control" placeholder="Stok">
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 
     <script type="text/javascript" src="../jquery/jquery-3.4.1.min.js"></script>
@@ -87,8 +120,12 @@
 
     <script>
         $(document).ready(function() {
-            $('#mytable').DataTable();
-        } );
+            $('#mytable').DataTable({
+                paging: true,
+                "lengthChange": false
+                //scrollY: 400
+            });
+        });
     </script>
 
 </html>
