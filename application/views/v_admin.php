@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="../fontawesome/css/all.css">
         <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="../bootstrap/dist/css/dataTables.bootstrap4.min.css">
-
-
     </head>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -31,33 +29,7 @@
                         <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Keluar</a>
                     </div>
                 </div>
-
-            <!--li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li-->
             </ul>
-            <!--form class="form-inline my-2 my-lg-0" method="POST" action="index.php/C_login">
-                <input type="text" name="username" class="form-control mr-sm-2" type="Username" placeholder="Username" aria-label="Search">
-                <input type="password" name="password" class="form-control mr-sm-2" type="Password" placeholder="Password" aria-label="Search">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-sign-in-alt"></i></button>
-            </form-->
         </div>
     </nav>
 
@@ -73,7 +45,7 @@
                     <i class="fas fa-plus"></i> Stok
                 </button>
 
-                <table class="table table-hover text-center" id="mytable">
+                <table class="table table-hover table-striped text-center" id="mytable">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -204,7 +176,9 @@
         $(document).ready(function() {
             $('#mytable').DataTable({
                 paging: true,
-                "lengthChange": false
+                "lengthChange": false,
+                "searching" : false,
+                "info" : false
                 //scrollY: 400
             });
 

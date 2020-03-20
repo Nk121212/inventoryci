@@ -1,0 +1,15 @@
+CREATE TRIGGER beli_barang after INSERT ON beli
+ FOR EACH ROW BEGIN
+ INSERT INTO stok SET
+ kd_barang = NEW.kd_barang, jumlah=New.jumlah
+ ON DUPLICATE KEY UPDATE jumlah=jumlah+New.jumlah;
+ END
+
+
+CREATE TRIGGER jual_barang after INSERT ON jual
+ FOR EACH ROW BEGIN
+ UPDATE stok
+ SET jumlah = jumlah - NEW.jumlah
+ WHERE
+ kd_barang = NEW.kd_barang;
+ END
