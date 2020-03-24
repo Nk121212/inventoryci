@@ -26,7 +26,7 @@
                     </button>
                     <div class="dropdown-menu">
                         <!-- Dropdown menu links -->
-                        <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+                        <a class="dropdown-item" href="C_admin/logout"><i class="fas fa-sign-out-alt"></i> Keluar</a>
                     </div>
                 </div>
             </ul>
@@ -82,40 +82,45 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    
-                    <div class="row">
 
-                        <div class="col-sm-12">
-                            <label for="nmbrg">Nama Barang :</label>
-                            <input type="text" name="" id="nmbrg" class="form-control">
-                            <br>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="stokbrgb">Stok :</label>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" id="stokbrgb"  aria-label="Amount (to the nearest dollar)">
-                                <div class="input-group-append">
-                                    <span class="input-group-text">Unit</span>
+                    <form action="C_admin/add_brg" method="post">
+
+                        <div class="modal-body">
+                            
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <label for="nmbrg">Nama Barang :</label>
+                                    <input type="text" name="nm_brg" id="nmbrg" class="form-control upper">
+                                    <br>
                                 </div>
+                                <div class="col-sm-6">
+                                    <label for="stokbrgb">Stok :</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" id="stokbrgb" name="stokbrgb" aria-label="Amount (to the nearest dollar)">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Unit</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="img-brgb">Image :</label>
+                                        <input type="file" class="form-control" id="img-brgb" name="img-brgb" onchange="readURL(this);" />
+                                    <br>
+                                </div>
+
+                                <div id="show-img" class="col-sm-12" align="center"></div>
+                                
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <label for="img-brgb">Image :</label>
-                            <input type="file" class="form-control" id="img-brgb" onchange="readURL(this);" />
-                            <br>
+                            
                         </div>
 
-                        <div id="show-img" class="col-sm-12" align="center"></div>
-                        
-                    </div>
-                    
-                </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    </form>
 
                 </div>
             </div>

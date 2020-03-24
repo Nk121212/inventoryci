@@ -19,7 +19,7 @@
                         'login' => true
                     )
                 );
-                redirect('../../../../index.php/C_admin');
+                redirect('C_admin');
             }
         }
 
