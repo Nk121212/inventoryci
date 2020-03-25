@@ -1,15 +1,41 @@
+CREATE TABLE beli(
+id_beli INT( 11 ) NOT NULL AUTO_INCREMENT ,
+kd_barang VARCHAR( 5 ) DEFAULT NULL ,
+nama_barang VARCHAR( 20 ) DEFAULT NULL ,
+jumlah INT( 11 ) DEFAULT NULL ,
+PRIMARY KEY ( id_beli )
+) ENGINE = MYISAM DEFAULT CHARSET = utf8;
+
+CREATE TABLE jual(
+id_jual INT( 11 ) NOT NULL AUTO_INCREMENT ,
+kd_pelanggan VARCHAR( 10 ) NOT NULL ,
+kd_barang VARCHAR( 5 ) DEFAULT NULL ,
+nama_barang VARCHAR( 20 ) DEFAULT NULL ,
+jumlah INT( 11 ) DEFAULT NULL ,
+PRIMARY KEY ( id_jual )
+) ENGINE = MYISAM DEFAULT CHARSET = utf8;
+
+CREATE  TABLE stok
+(kd_barang varchar(5) NOT  NULL
+, jumlah int(11) NOT NULL
+, PRIMARY KEY (kd_barang)
+) ENGINE = MYISAM  DEFAULT CHARSET = utf8;
+
 CREATE TRIGGER beli_barang after INSERT ON beli
  FOR EACH ROW BEGIN
  INSERT INTO stok SET
- kd_barang = NEW.kd_barang, jumlah=New.jumlah
+ kd_barang = NEW.kd_barang, jumlah=New.jumlah, updated_at=NOW()
  ON DUPLICATE KEY UPDATE jumlah=jumlah+New.jumlah;
  END
 
-
-CREATE TRIGGER jual_barang after INSERT ON jual
+ CREATE TRIGGER jual_barang after INSERT ON jual
  FOR EACH ROW BEGIN
  UPDATE stok
  SET jumlah = jumlah - NEW.jumlah
  WHERE
  kd_barang = NEW.kd_barang;
  END
+
+ SELECT a.*, b.id_beli,b.kd_barang, b.nama_barang FROM stok a
+LEFT JOIN beli b ON a.kd_barang = b.kd_barang
+GROUP BY a.kd_barang;
